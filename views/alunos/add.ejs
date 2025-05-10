@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/forms.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="form-container bg-light p-4 rounded shadow-sm">
+                    <h1 class="form-title text-center mb-4">Adicionar Novo Aluno</h1>
+                    
+                    <form action="/alunos/add" method="POST" class="needs-validation" novalidate>
+
+                        <!-- Input para Nome Completo -->
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                            <div class="invalid-feedback">Por favor, insira o nome completo</div>
+                        </div>
+                        
+                        <!-- Input para Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback">Por favor, insira um email válido</div>
+                        </div>
+                        
+                        <!-- Input para Idade -->
+                        <div class="mb-3">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="number" class="form-control" id="idade" name="idade" min="12" required>
+                            <div class="invalid-feedback">A idade deve ser maior que zero</div>
+                        </div>
+                        
+                        <!-- Seleção para Curso -->
+                        <div class="mb-3">
+                            <label for="curso_id" class="form-label">Matricular em Curso (opcional)</label>
+                            <select class="form-select" id="curso_id" name="curso_id">
+                                <option value="">Selecione um curso...</option>
+                                <% cursos.forEach(curso => { %>
+                                    <option value="<%= curso.id %>"><%= curso.nome %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        
+                        <!-- Botões de Ação -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="/alunos" class="btn btn-outline-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Salvar Aluno</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script de validação idêntico ao do formulário de cursos
+        (function() {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cursos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Cursos</h1>
+        
+        <a href="/cursos/add" class="btn btn-success mb-3">Adicionar Curso</a>
+        
+        <% if (cursos.length > 0) { %>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Carga Horária</th>
+                        <th>Alunos Matriculados</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cursos.forEach(curso => { %>
+                        <tr>
+                            <td><%= curso.id %></td>
+                            <td><%= curso.nome %></td>
+                            <td><%= curso.carga_horaria %> horas</td>
+                            <td><%= curso.Alunos ? curso.Alunos.length : 0 %></td>
+                            <td>
+                                <a href="/cursos/<%= curso.id %>" class="btn btn-info btn-sm">Detalhes</a>
+                                <a href="/cursos/edit/<%= curso.id %>" class="btn btn-warning btn-sm">Editar</a>
+                                <form action="/cursos/delete/<%= curso.id %>" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="alert alert-info">Nenhum curso cadastrado.</div>
+        <% } %>
+    </div>
+
+    <%- include('../partials/footer') %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

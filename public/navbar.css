@@ -1,0 +1,63 @@
+/* Estilo para a navbar */
+.navbar {
+  background-color: rgb(0, 199, 90) !important;  /* Cor de fundo */
+  padding: 10px 20px; /* Adiciona um pouco de espaçamento */
+  height: 10vh; /* Altura da navbar */
+}
+
+/* Cor da navbar quando está em estado 'expandido' */
+.navbar-expand-lg .navbar-nav .nav-link {
+  color: rgb(255, 255, 255); /* Cor do texto */
+  padding: 10px 15px; /* Espaçamento interno */
+  font-size: 20px; /* Tamanho da fonte */
+  font-weight: bold; /* Peso da fonte */
+  font-family: 'montserrat', sans-serif; /* Fonte */
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+  background-color: rgb(0, 115, 52); /* Cor de fundo ao passar o mouse */
+  color: white; /* Cor do texto ao passar o mouse */
+  border-radius: 5px; /* Borda arredondada ao passar o mouse */
+  font-size: 22px;
+  transition: all 0.5s ease; /* Transição suave */
+  
+
+}
+
+/* Estilo do logo (navbar-brand) */
+.navbar-brand {
+  color: white; /* Cor do texto */
+  font-size: 26px; /* Tamanho da fonte */
+  font-weight: bold; /* Peso da fonte */
+}
+
+.navbar-brand:hover {
+  color: #ffffff; /* Cor do logo ao passar o mouse */
+  
+}
+
+/* Estilo do botão de toggle para telas pequenas */
+.navbar-toggler-icon {
+  background-color: rgb(255, 255, 255); /* Cor do ícone de toggling */
+}
+
+#iconeasterisco {
+    color: white; /* Cor do ícone */
+    font-size: 30px; /* Tamanho do ícone */
+    margin-right: 20px; /* Espaçamento à direita */
+}
+
+/* Ajuste para a navbar em dispositivos móveis */
+@media (max-width: 767px) {
+  .navbar {
+    padding: 10px; /* Menos espaçamento em dispositivos móveis */
+  }
+
+  .navbar-nav {
+    text-align: center; /* Alinha os itens ao centro */
+  }
+
+  .navbar-nav .nav-link {
+    padding: 8px 12px; /* Menos espaçamento nos links */
+  }
+}

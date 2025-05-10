@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h1>Editar Curso</h1>
+    
+    <form action="/cursos/edit/<%= curso.id %>" method="POST">
+        <div class="form-group mb-3">
+            <label for="nome">Nome do Curso</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="<%= curso.nome %>" required>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="carga_horaria">Carga Horária (horas)</label>
+            <input type="number" class="form-control" id="carga_horaria" name="carga_horaria" value="<%= curso.carga_horaria %>" required>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="descricao">Descrição</label>
+            <textarea class="form-control" id="descricao" name="descricao" rows="3"><%= curso.descricao %></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="/cursos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

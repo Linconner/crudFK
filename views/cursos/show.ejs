@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h1>Detalhes do Curso</h1>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"><%= curso.nome %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= curso.carga_horaria %> horas</h6>
+            <p class="card-text"><%= curso.descricao %></p>
+            
+            <div class="mt-3">
+                <a href="/cursos/edit/<%= curso.id %>" class="btn btn-warning">Editar</a>
+                <form action="/cursos/delete/<%= curso.id %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Excluir</button>
+                </form>
+                <a href="/cursos" class="btn btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </div>
+    
+    <h4>Alunos Matriculados</h4>
+    
+    <% if (curso.Alunos && curso.Alunos.length > 0) { %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% curso.Alunos.forEach(aluno => { %>
+                    <tr>
+                        <td><%= aluno.id %></td>
+                        <td><%= aluno.nome %></td>
+                        <td><%= aluno.email %></td>
+                        <td>
+                            <form action="/cursos/<%= curso.id %>/remove-aluno/<%= aluno.id %>" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <div class="alert alert-info">Nenhum aluno matriculado neste curso.</div>
+    <% } %>
+    
+    <h4 class="mt-4">Matricular Aluno</h4>
+    <form action="/cursos/<%= curso.id %>/add-aluno" method="POST">
+        <div class="input-group mb-3">
+            <select class="form-select" name="aluno_id" required>
+                <option value="">Selecione um aluno...</option>
+                <% alunos.forEach(aluno => { %>
+                    <option value="<%= aluno.id %>"><%= aluno.nome %> (<%= aluno.email %>)</option>
+                <% }); %>
+            </select>
+            <button class="btn btn-success" type="submit">Matricular</button>
+        </div>
+    </form>
+</div>

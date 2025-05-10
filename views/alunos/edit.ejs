@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h1>Editar Aluno</h1>
+    
+    <form action="/alunos/edit/<%= aluno.id %>" method="POST">
+        <div class="form-group mb-3">
+            <label for="nome">Nome Completo</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="<%= aluno.nome %>" required>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= aluno.email %>" required>
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for="idade">Idade</label>
+            <input type="number" class="form-control" id="idade" name="idade" value="<%= aluno.idade %>" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="/alunos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
