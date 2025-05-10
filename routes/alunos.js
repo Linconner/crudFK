@@ -2,6 +2,28 @@ const express = require('express');
 const router = express.Router();
 const { Aluno, Curso } = require('../models');
 
+
+//apagarne
+
+router.post('/delete/:id', async (req, res) => {
+    try {
+        const alunoId = req.params.id;
+        
+        // Buscar o aluno no banco e deletar
+        await Aluno.destroy({
+            where: {
+                id: alunoId
+            }
+        });
+
+        // Redirecionar de volta para a lista de alunos
+        res.redirect('/alunos');
+    } catch (error) {
+        console.error('Erro ao excluir aluno:', error);
+        res.status(500).send('Erro ao excluir aluno.');
+    }
+});
+
 // Listar todos os alunos
 router.get('/', async (req, res) => {
   try {
