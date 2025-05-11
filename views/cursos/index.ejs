@@ -22,9 +22,9 @@
         <a href="/cursos/add" class="btn btn-success mb-3">Adicionar Curso</a>
         
         <% if (cursos.length > 0) { %>
-            <table class="table table-bordered">
+            <table class="table table-striped table-hover align-middle border shadow-sm">
                 <thead class="thead-green">
-                    <tr>
+                    <tr class="bg-success text-white">
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Carga Horária</th>
@@ -32,7 +32,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody class="testandoveyr">
+                <tbody>
                     <% cursos.forEach(curso => { %>
                         <tr>
                             <td><%= curso.id %></td>
@@ -40,10 +40,10 @@
                             <td><%= curso.carga_horaria %> horas</td>
                             <td><%= curso.Alunos ? curso.Alunos.length : 0 %></td>
                             <td>
-                                <a href="/cursos/<%= curso.id %>" class="btn btn-info btn-sm">Detalhes</a>
-                                <a href="/cursos/edit/<%= curso.id %>" class="btn btn-warning btn-sm">Editar</a>
-                                <form action="/cursos/delete/<%= curso.id %>" method="POST" class="d-inline">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
+                                <a href="/cursos/<%= curso.id %>" class="btn btn-outline-info btn-sm">Detalhes</a>
+                                <a href="/cursos/edit/<%= curso.id %>" class="btn btn-outline-primary btn-sm">Editar</a>
+                                <form action="/cursos/delete/<%= curso.id %>?_method=DELETE" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
                                 </form>
                             </td>
                         </tr>

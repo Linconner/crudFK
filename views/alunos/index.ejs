@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Hammersmith+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Hammersmith+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
@@ -23,7 +23,7 @@
         <a href="/alunos/add" class="btn btn-success mb-3">Adicionar Aluno</a>
         
         <% if (alunos.length > 0) { %>
-            <table class="table table-bordered">
+            <table class="table table-striped table-hover align-middle border  shadow-sm">
                 <thead class="thead-green">
                     <tr class="bg-success text-white">
                         <th>ID</th>
@@ -34,7 +34,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody class="testandoveyr">
+                <tbody>
                     <% alunos.forEach(aluno => { %>
                         <tr>
                             <td><%= aluno.id %></td>
@@ -43,10 +43,10 @@
                             <td><%= aluno.idade %></td>
                             <td><%= aluno.Cursos ? aluno.Cursos.length : 0 %></td>
                             <td>
-                                <a href="/alunos/<%= aluno.id %>" class="btn btn-info btn-sm">Detalhes</a>
-                                <a href="/alunos/edit/<%= aluno.id %>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="/alunos/<%= aluno.id %>" class="btn btn-outline-info btn-sm">Detalhes</a>
+                                <a href="/alunos/edit/<%= aluno.id %>" class="btn btn-outline-primary btn-sm">Editar</a>
                                 <form action="/alunos/delete/<%= aluno.id %>" method="POST" class="d-inline">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</button>
                                 </form>
                             </td>
                         </tr>

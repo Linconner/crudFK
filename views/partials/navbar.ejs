@@ -10,9 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/alunos">Alunos</a>
-        <a class="nav-link" href="/cursos">Cursos</a>
+        <a class="nav-link <%= currentPath === '/' ? 'active' : '' %>" href="/">Home</a>
+        <a class="nav-link <%= currentPath.startsWith('/alunos') ? 'active' : '' %>" href="/alunos">Alunos</a>
+        <a class="nav-link <%= currentPath.startsWith('/cursos') ? 'active' : '' %>" href="/cursos">Cursos</a>
       </div>
     </div>
   </div>

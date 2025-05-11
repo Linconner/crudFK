@@ -13,11 +13,19 @@ const db = require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
 app.use(session({
   secret: 'secret-key',
   resave: false,
   saveUninitialized: true
 }));
+
+// Middleware to set current path for active nav link
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
 
 // Configuração do EJS
 app.set('views', path.join(__dirname, 'views'));
@@ -37,12 +45,14 @@ app.use('/', indexRouter);
 app.use('/alunos', alunosRouter);
 app.use('/cursos', cursosRouter);
 
+
 // Sincronização com o banco de dados
 db.sequelize.sync({ force: false }).then(() => {
   console.log('Banco de dados sincronizado');
 }).catch(err => {
   console.error('Erro ao sincronizar banco de dados:', err);
 });
+
 
 // Middleware de erro
 app.use((err, req, res, next) => {

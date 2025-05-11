@@ -14,6 +14,14 @@
   font-family: 'montserrat', sans-serif; /* Fonte */
 }
 
+.navbar-expand-lg .navbar-nav .nav-link.active {
+  background-color: rgb(0, 115, 52); /* Cor de fundo quando ativo */
+  color: white; /* Cor do texto quando ativo */
+  border-radius: 5px; /* Borda arredondada */
+  font-size: 22px;
+  transform: scale(0.9);
+}
+
 .navbar-expand-lg .navbar-nav .nav-link:hover {
   background-color: rgb(0, 115, 52); /* Cor de fundo ao passar o mouse */
   color: white; /* Cor do texto ao passar o mouse */
